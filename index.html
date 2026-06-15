@@ -4,31 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mighty One Music — The First AI-Native Independent Label</title>
-  <meta name="description" content="Mighty One Music is the first AI-native independent record label. We use cutting-edge AI tools to empower independent artists with production, publishing, marketing, and royalty management.">
-  <meta property="og:title" content="Mighty One Music">
-  <meta property="og:description" content="The First AI-Native Independent Label. Powered by AI. Driven by artists.">
+  <meta name="description" content="Mighty One Music is the first AI-native independent record label. Built in the Bronx. Powered by AI. Driven by artists. Partnered with Roc Nation.">
+  <meta name="keywords" content="independent record label, AI music, Bronx, Roc Nation, Mia Lailani, Devan Ibiza, AI-native label">
+  <meta name="author" content="Mighty One Music">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mighty One Music — The First AI-Native Independent Label">
+  <meta property="og:description" content="Built in the Bronx. Powered by AI. Driven by artists. Partnered with Roc Nation.">
   <meta property="og:url" content="https://mightyonemusic.com">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mighty One Music — The First AI-Native Independent Label">
+  <meta name="twitter:description" content="Built in the Bronx. Powered by AI. Partnered with Roc Nation.">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Mighty One Music",
+    "description": "The First AI-Native Independent Record Label",
+    "foundingLocation": "The Bronx, New York",
+    "genre": ["R&B", "Soul", "Hip-Hop", "Pop"],
+    "member": [
+      { "@type": "MusicGroup", "name": "Mia Lailani", "genre": "R&B/Soul" },
+      { "@type": "MusicGroup", "name": "Devan Ibiza", "genre": "Hip-Hop/R&B" }
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --black: #000000;
-      --dark: #0a0a0a;
-      --dark2: #111111;
-      --dark3: #1a1a1a;
+      --dark: #080808;
+      --dark2: #0f0f0f;
+      --dark3: #161616;
+      --dark4: #1e1e1e;
       --gray: #888888;
+      --gray2: #555555;
       --light: #cccccc;
       --white: #f5f5f5;
       --accent: #c8ff00;
+      --accent-glow: rgba(200, 255, 0, 0.15);
       --accent2: #7b5cff;
+      --accent2-glow: rgba(123, 92, 255, 0.12);
       --font-main: 'Inter', -apple-system, sans-serif;
       --font-display: 'Space Grotesk', 'Inter', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -37,7 +70,24 @@
       color: var(--white);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+
+    ::selection { background: var(--accent); color: var(--black); }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gray2); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* NAV */
     nav {
@@ -49,33 +99,79 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0,0,0,0.8);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.3s ease;
+      background: rgba(0,0,0,0);
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid transparent;
+      transition: all 0.4s ease;
     }
 
-    nav .logo {
-      height: 50px;
+    nav.scrolled {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.7rem 2rem;
     }
+
+    nav .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    nav .nav-brand .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--accent-glow); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 8px transparent; }
+    }
+
+    nav .nav-brand .name {
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+    }
+
+    nav .nav-brand .name .green { color: var(--accent); }
 
     nav .nav-links {
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     nav .nav-links a {
       color: var(--gray);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       transition: color 0.3s;
+      position: relative;
+    }
+
+    nav .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
     nav .nav-links a:hover { color: var(--white); }
+    nav .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
       background: var(--accent) !important;
@@ -83,9 +179,10 @@
       padding: 0.5rem 1.2rem;
       border-radius: 4px;
       font-weight: 600 !important;
+      transition: all 0.3s;
     }
-
-    .nav-cta:hover { opacity: 0.85; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* HERO */
     .hero {
@@ -97,27 +194,97 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       position: relative;
-      background: radial-gradient(ellipse at 50% 50%, rgba(123,92,255,0.08) 0%, transparent 70%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--accent2-glow) 0%, transparent 70%);
+      pointer-events: none;
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--black));
+      pointer-events: none;
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(-55%) translateY(0); }
+      100% { transform: translateX(-45%) translateY(-30px); }
+    }
+
+    .hero-logo {
+      width: 420px;
+      max-width: 80vw;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(200, 255, 0, 0.08);
+      border: 1px solid rgba(200, 255, 0, 0.2);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      animation: fadeInUp 1.2s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .hero-badge .pulse-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
     }
 
     .hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
       font-weight: 900;
       line-height: 1.05;
       margin-bottom: 1.5rem;
       letter-spacing: -0.02em;
+      animation: fadeInUp 1.2s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .hero h1 .accent { color: var(--accent); }
     .hero h1 .accent2 { color: var(--accent2); }
 
     .hero p {
-      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--gray);
-      max-width: 600px;
+      max-width: 620px;
       margin-bottom: 2.5rem;
       font-weight: 300;
+      animation: fadeInUp 1.2s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .hero-buttons {
@@ -125,14 +292,17 @@
       gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
+      animation: fadeInUp 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       padding: 0.9rem 2rem;
-      border-radius: 4px;
+      border-radius: 6px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.08em;
@@ -144,21 +314,71 @@
     .btn-primary {
       background: var(--accent);
       color: var(--black);
+      box-shadow: 0 4px 20px var(--accent-glow);
     }
 
-    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px var(--accent-glow);
+    }
 
     .btn-outline {
       background: transparent;
       color: var(--white);
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .btn-outline:hover { border-color: var(--white); }
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* MARQUEE */
+    .marquee {
+      overflow: hidden;
+      padding: 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: var(--dark);
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 3rem;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gray2);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .marquee-item::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
 
     /* SECTIONS */
     section {
       padding: 6rem 2rem;
+      position: relative;
     }
 
     .container {
@@ -167,12 +387,13 @@
     }
 
     .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1rem;
+      display: inline-block;
     }
 
     .section-title {
@@ -181,6 +402,7 @@
       font-weight: 800;
       margin-bottom: 1.5rem;
       letter-spacing: -0.01em;
+      line-height: 1.15;
     }
 
     .section-text {
@@ -203,26 +425,153 @@
       align-items: start;
     }
 
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
     .about-stat {
-      margin-bottom: 2rem;
+      position: relative;
     }
 
     .about-stat .number {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-weight: 800;
       color: var(--accent);
+      line-height: 1;
     }
 
     .about-stat .label {
       color: var(--gray);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .about-text p {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .rocnation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--light);
+    }
+
+    .rocnation-badge .star {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    /* RELEASES */
+    #releases {
+      background: var(--black);
+    }
+
+    .releases-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .release-card {
+      background: var(--dark2);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .release-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 255, 0, 0.15);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .release-art {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--dark3);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .release-art .placeholder {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--dark4);
+    }
+
+    .release-new-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: var(--black);
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .release-info {
+      padding: 1.5rem;
+    }
+
+    .release-info .artist-name {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .release-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .release-info .type {
+      color: var(--gray);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .release-info .type .pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background: var(--dark3);
+      border-radius: 100px;
+      margin-right: 0.3rem;
     }
 
     /* ARTISTS */
     #artists {
-      background: var(--black);
+      background: var(--dark);
     }
 
     .artists-grid {
@@ -234,26 +583,22 @@
 
     .artist-card {
       background: var(--dark2);
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.3s, border-color 0.3s;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .artist-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.3);
     }
 
     .artist-image {
       width: 100%;
       aspect-ratio: 1;
       background: var(--dark3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: var(--dark3);
       position: relative;
       overflow: hidden;
     }
@@ -262,33 +607,65 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .artist-card:hover .artist-image img {
+      transform: scale(1.04);
+    }
+
+    .artist-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(to bottom, transparent, rgba(15,15,15,0.8));
+      pointer-events: none;
     }
 
     .artist-info {
-      padding: 1.5rem;
+      padding: 1.75rem;
     }
 
     .artist-info h3 {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 0.25rem;
     }
 
+    .artist-info h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .artist-info h3 a:hover { color: var(--accent); }
+
     .artist-info .role {
       color: var(--accent);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
 
-    .artist-info p {
+    .artist-info .bio {
       color: var(--gray);
       font-size: 0.9rem;
       line-height: 1.7;
       margin-bottom: 1.25rem;
+    }
+
+    .artist-info .highlight {
+      color: var(--light);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+      padding-left: 0.8rem;
+      border-left: 2px solid var(--accent);
     }
 
     .artist-links {
@@ -301,27 +678,30 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.35rem 0.75rem;
+      padding: 0.4rem 0.8rem;
       background: var(--dark3);
-      border-radius: 4px;
+      border-radius: 6px;
       color: var(--light);
       text-decoration: none;
       font-size: 0.75rem;
       font-weight: 500;
-      transition: background 0.3s;
+      transition: all 0.3s;
     }
 
-    .artist-link:hover { background: rgba(255,255,255,0.1); }
+    .artist-link:hover {
+      background: var(--dark4);
+      color: var(--white);
+    }
 
-    /* WHAT WE DO */
+    /* SERVICES */
     #services {
-      background: var(--dark);
+      background: var(--black);
     }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 3rem;
     }
 
@@ -330,34 +710,54 @@
       padding: 2rem;
       border-radius: 12px;
       border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(255,255,255,0.1);
+      background: var(--dark3);
     }
 
     .service-card .icon {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
     }
 
     .service-card h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
     .service-card p {
       color: var(--gray);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.7;
     }
 
     /* AI NATIVE */
     #ai-native {
-      background: var(--black);
+      background: var(--dark);
       position: relative;
+      overflow: hidden;
+    }
+
+    #ai-native::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent2-glow) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .ai-content {
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     .ai-content .section-text {
@@ -374,88 +774,199 @@
 
     .ai-feature {
       background: var(--dark2);
-      padding: 1.5rem;
-      border-radius: 8px;
+      padding: 1.75rem;
+      border-radius: 10px;
       border: 1px solid rgba(255,255,255,0.05);
       text-align: left;
+      transition: all 0.3s;
+    }
+
+    .ai-feature:hover {
+      border-color: rgba(123, 92, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .ai-feature .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(123, 92, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .ai-feature h4 {
       font-family: var(--font-display);
       font-weight: 600;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
       font-size: 0.95rem;
     }
 
     .ai-feature p {
       color: var(--gray);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       line-height: 1.6;
+    }
+
+    /* PRESS */
+    #press {
+      background: var(--black);
+    }
+
+    .press-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .press-item {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .press-item:hover {
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(-3px);
+    }
+
+    .press-item .outlet {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .press-item .description {
+      color: var(--gray);
+      font-size: 0.78rem;
+      line-height: 1.5;
     }
 
     /* JOIN */
     #join {
       background: var(--dark);
       text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #join::before {
+      content: '';
+      position: absolute;
+      bottom: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+      pointer-events: none;
     }
 
     .join-box {
-      background: linear-gradient(135deg, rgba(123,92,255,0.1), rgba(200,255,0,0.05));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(123,92,255,0.08), rgba(200,255,0,0.04));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
       padding: 4rem 2rem;
       margin-top: 3rem;
+      position: relative;
+      z-index: 1;
     }
 
     .join-box h3 {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       font-weight: 800;
       margin-bottom: 1rem;
     }
 
     .join-box p {
       color: var(--gray);
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto 2rem;
+      font-size: 1rem;
     }
 
     /* FOOTER */
     footer {
-      padding: 3rem 2rem;
+      padding: 3rem 2rem 2rem;
       border-top: 1px solid rgba(255,255,255,0.05);
       text-align: center;
+      background: var(--black);
     }
+
+    .footer-logo {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.4;
+      margin-bottom: 1.5rem;
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.3s;
+    }
+
+    footer .footer-links a:hover { color: var(--white); }
 
     footer p {
-      color: var(--gray);
-      font-size: 0.8rem;
+      color: var(--gray2);
+      font-size: 0.78rem;
     }
 
-    footer .footer-logo {
-      height: 30px;
-      filter: brightness(0) invert(0.5);
-      margin-bottom: 1rem;
+    footer .footer-tagline {
+      color: var(--gray);
+      font-size: 0.8rem;
+      margin-top: 0.4rem;
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
+      nav { padding: 0.8rem 1rem; }
       nav .nav-links { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
       .artists-grid { grid-template-columns: 1fr; }
+      .releases-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .ai-features { grid-template-columns: 1fr; }
+      .press-grid { grid-template-columns: repeat(2, 1fr); }
       section { padding: 4rem 1.5rem; }
+      .hero { padding: 5rem 1.5rem 3rem; }
+      .hero-logo { width: 280px; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
-    <span style="color:var(--accent);font-family:var(--font-display);font-weight:700;font-size:0.95rem;letter-spacing:0.05em;">MIGHTY ONE MUSIC</span>
+  <nav id="nav">
+    <a href="#" class="nav-brand">
+      <span class="dot"></span>
+      <span class="name">MIGHTY <span class="green">ONE</span> MUSIC</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#releases">Releases</a></li>
       <li><a href="#artists">Artists</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#ai-native">AI-Native</a></li>
@@ -465,39 +976,132 @@
 
   <!-- HERO -->
   <section class="hero">
-    <p class="section-label">Welcome to the future of independent music</p>
-    <img src="assets/logo.png" style="width:500px;height:auto;object-fit:contain;margin:1.5rem 0;">
+    <img src="assets/logo.png" class="hero-logo" alt="Mighty One Music">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      Partnered with Roc Nation
+    </div>
     <h1>The First<br><span class="accent">AI-Native</span> Independent<br>Label</h1>
-    <p>We built a record label from the ground up powered by AI. Real artists. Real music. Infinite scale. Mighty One Music is proving that independent artists don't need a major deal to compete.</p>
+    <p>We built a record label from the ground up powered by AI. Real artists. Real music. Infinite scale. Independent artists don't need a major deal to compete, they need better tools.</p>
     <div class="hero-buttons">
       <a href="#artists" class="btn btn-primary">Meet Our Artists</a>
-      <a href="https://dlqwkegegxz.typeform.com/to/q5rxaI90" class="btn btn-outline" target="_blank">Join the Movement</a>
+      <a href="#releases" class="btn btn-outline">Latest Releases</a>
     </div>
   </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">Fox 5 NY</span>
+      <span class="marquee-item">NY Post</span>
+      <span class="marquee-item">News 12</span>
+      <span class="marquee-item">Broadway World</span>
+      <span class="marquee-item">Roc Nation</span>
+      <span class="marquee-item">Suno AI</span>
+      <span class="marquee-item">Bleacher Report</span>
+      <span class="marquee-item">Bronx Born</span>
+      <span class="marquee-item">Fox 5 NY</span>
+      <span class="marquee-item">NY Post</span>
+      <span class="marquee-item">News 12</span>
+      <span class="marquee-item">Broadway World</span>
+      <span class="marquee-item">Roc Nation</span>
+      <span class="marquee-item">Suno AI</span>
+      <span class="marquee-item">Bleacher Report</span>
+      <span class="marquee-item">Bronx Born</span>
+    </div>
+  </div>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <p class="section-label">Who We Are</p>
-      <h2 class="section-title">Built in the Bronx.<br>Powered by AI.</h2>
-      <p class="section-text">Mighty One Music was born from a simple idea: what if independent artists had the same tools, intelligence, and operational power as major labels, but kept 100% ownership of their art? We're building that reality. Using AI for production, marketing, royalty management, and fan engagement, we're creating a new model for the music industry.</p>
+      <p class="section-label reveal">Who We Are</p>
+      <h2 class="section-title reveal">Built in the Bronx.<br>Powered by AI.</h2>
+      <p class="section-text reveal">Mighty One Music was born from a simple idea: what if independent artists had the same tools, intelligence, and operational power as major labels, but kept 100% ownership of their art? We're building that reality.</p>
+
       <div class="about-grid">
-        <div>
-          <div class="about-stat">
-            <div class="number">56+</div>
-            <div class="label">Original tracks released</div>
+        <div class="reveal">
+          <div class="about-stats">
+            <div class="about-stat">
+              <div class="number">60+</div>
+              <div class="label">Original tracks released</div>
+            </div>
+            <div class="about-stat">
+              <div class="number">50+</div>
+              <div class="label">Press features & articles</div>
+            </div>
+            <div class="about-stat">
+              <div class="number">67K+</div>
+              <div class="label">Combined followers</div>
+            </div>
+            <div class="about-stat">
+              <div class="number">10+</div>
+              <div class="label">Years of independent releases</div>
+            </div>
           </div>
-          <div class="about-stat">
-            <div class="number">40+</div>
-            <div class="label">Press features & articles</div>
-          </div>
-          <div class="about-stat">
-            <div class="number">10+</div>
-            <div class="label">Years of independent releases</div>
+          <div class="rocnation-badge">
+            <span class="star">&#9733;</span>
+            Roc Nation Partnership — Established April 2026
           </div>
         </div>
-        <div>
-          <p class="section-text">Our roster includes Devan Ibiza, a hip-hop/R&B/Latin producer and Suno AI pioneer featured on Fox 5 NY and the NY Post, and Mia Lailani, an R&B/soul singer-songwriter whose debut album was covered by News 12, Broadway World, and more. Together with AI tools and family-driven grit, we're building a label that scales without selling out.</p>
+        <div class="about-text reveal">
+          <p>Our roster includes <strong style="color:var(--white)">Devan Ibiza</strong>, a hip-hop/R&B/Latin producer and Suno AI pioneer featured on Fox 5 NY and the NY Post, and <strong style="color:var(--white)">Mia Lailani</strong>, an R&B/soul singer-songwriter whose debut album was covered by News 12, Broadway World, and more.</p>
+          <p>In April 2026, Mighty One Music secured a partnership with <strong style="color:var(--white)">Roc Nation</strong>, validating the AI-native model and opening new doors for our artists. We're proving that a family-built, AI-powered label can compete at the highest level.</p>
+          <p>Together with AI tools and family-driven grit, we're building a label that scales without selling out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELEASES -->
+  <section id="releases">
+    <div class="container">
+      <p class="section-label reveal">New Music</p>
+      <h2 class="section-title reveal">Latest Releases</h2>
+      <p class="section-text reveal">Fresh tracks from the Mighty One roster. Streaming now on all platforms.</p>
+
+      <div class="releases-grid">
+        <!-- EBB & FLOW -->
+        <div class="release-card reveal">
+          <div class="release-art" style="background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);">
+            <span class="placeholder">E&F</span>
+            <span class="release-new-tag">New Single</span>
+          </div>
+          <div class="release-info">
+            <div class="artist-name">Mia Lailani</div>
+            <h3>Ebb &amp; Flow</h3>
+            <div class="type">
+              <span class="pill">R&amp;B</span>
+              <span class="pill">Soul</span>
+              <span>Released May 2026</span>
+            </div>
+            <div class="artist-links">
+              <a href="https://open.spotify.com/artist/0yyjOE8qtButTB98EPNzdV" target="_blank" class="artist-link">Spotify</a>
+              <a href="https://music.apple.com/us/artist/mia-lailani/1109508734" target="_blank" class="artist-link">Apple Music</a>
+              <a href="https://www.youtube.com/channel/UCnPZhcnZ6tQ4at624qgnk-g" target="_blank" class="artist-link">YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- PORTLAND -->
+        <div class="release-card reveal">
+          <div class="release-art" style="background: linear-gradient(135deg, #1a1a1a, #2d1b00, #1a1a1a);">
+            <span class="placeholder">PDX</span>
+            <span class="release-new-tag">New Single</span>
+          </div>
+          <div class="release-info">
+            <div class="artist-name">Devan Ibiza</div>
+            <h3>Portland</h3>
+            <div class="type">
+              <span class="pill">Hip-Hop</span>
+              <span class="pill">Boom-Bap</span>
+              <span>Released April 2026</span>
+            </div>
+            <div class="artist-links">
+              <a href="https://open.spotify.com/artist/0zBNBxDvlwDb0J5hxTyvNA" target="_blank" class="artist-link">Spotify</a>
+              <a href="https://music.apple.com/us/artist/devan-ibiza/587453167" target="_blank" class="artist-link">Apple Music</a>
+              <a href="https://soundcloud.com/devanibiza" target="_blank" class="artist-link">SoundCloud</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -506,19 +1110,20 @@
   <!-- ARTISTS -->
   <section id="artists">
     <div class="container">
-      <p class="section-label">Our Roster</p>
-      <h2 class="section-title">Featured Artists</h2>
-      <div class="artists-grid">
+      <p class="section-label reveal">Our Roster</p>
+      <h2 class="section-title reveal">Featured Artists</h2>
 
+      <div class="artists-grid">
         <!-- MIA LAILANI -->
-        <div class="artist-card">
+        <div class="artist-card reveal">
           <div class="artist-image">
             <img src="assets/mia-portrait.jpg" alt="Mia Lailani">
           </div>
           <div class="artist-info">
-            <h3><a href="https://www.mialailani.com" target="_blank" style="color:inherit;text-decoration:none;">Mia Lailani</a></h3>
+            <h3><a href="https://www.mialailani.com" target="_blank">Mia Lailani</a></h3>
             <div class="role">R&B / Soul Singer-Songwriter</div>
-            <p>From the Bronx, Mia has been writing and recording music for nearly a decade. Earning her first songwriting credit at 10 years old, her catalog spans R&B, Pop, Ballads, Funk, and Hip-Hop. With raw vulnerability and authentic storytelling, her music explores love, heartbreak, and self-discovery.</p>
+            <p class="bio">From the Bronx, Mia has been writing and recording music for nearly a decade. Earning her first songwriting credit at 10 years old, her catalog spans R&B, Pop, Ballads, Funk, and Hip-Hop. Raw vulnerability meets authentic storytelling.</p>
+            <div class="highlight">Roc Nation partner artist. New single "Ebb &amp; Flow" out now. Debut EP "Mia Mia" streaming everywhere.</div>
             <div class="artist-links">
               <a href="https://open.spotify.com/artist/0yyjOE8qtButTB98EPNzdV" target="_blank" class="artist-link">Spotify</a>
               <a href="https://music.apple.com/us/artist/mia-lailani/1109508734" target="_blank" class="artist-link">Apple Music</a>
@@ -531,14 +1136,15 @@
         </div>
 
         <!-- DEVAN IBIZA -->
-        <div class="artist-card">
+        <div class="artist-card reveal">
           <div class="artist-image">
             <img src="assets/devan-ibiza.jpg" alt="Devan Ibiza">
           </div>
           <div class="artist-info">
-            <h3><a href="https://devanibiza.net" target="_blank" style="color:inherit;text-decoration:none;">Devan Ibiza</a></h3>
+            <h3><a href="https://devanibiza.net" target="_blank">Devan Ibiza</a></h3>
             <div class="role">Producer / DJ / Solo Artist</div>
-            <p>A Bronx-born producer and DJ known for his "How to Make a Beat" series sampling sounds from Yankee Stadium, bodegas, and the NYC subway. Featured on Fox 5 NY, the NY Post, and Bleacher Report. A Suno AI pioneer pushing the boundaries of what AI-assisted production can create.</p>
+            <p class="bio">A Bronx-born producer and DJ known for his "How to Make a Beat" series sampling sounds from Yankee Stadium, bodegas, and the NYC subway. A Suno AI pioneer pushing the boundaries of AI-assisted production.</p>
+            <div class="highlight">Featured on Fox 5 NY, NY Post, and Bleacher Report. New single "Portland" out now. Hip-hop, boom-bap, conscious rap, R&B.</div>
             <div class="artist-links">
               <a href="https://open.spotify.com/artist/0zBNBxDvlwDb0J5hxTyvNA" target="_blank" class="artist-link">Spotify</a>
               <a href="https://music.apple.com/us/artist/devan-ibiza/587453167" target="_blank" class="artist-link">Apple Music</a>
@@ -549,7 +1155,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -557,38 +1162,39 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <p class="section-label">What We Do</p>
-      <h2 class="section-title">Everything a major label does.<br>Without the major label.</h2>
+      <p class="section-label reveal">What We Do</p>
+      <h2 class="section-title reveal">Everything a major label does.<br>Without the major label.</h2>
+
       <div class="services-grid">
-        <div class="service-card">
-          <div class="icon">🎧</div>
+        <div class="service-card reveal">
+          <div class="icon">&#127911;</div>
           <h3>AI-Powered Production</h3>
-          <p>Cutting-edge AI tools for music production, mixing, and mastering. We help artists create at a level that competes with major studio output, without the major studio cost.</p>
+          <p>Cutting-edge AI tools for music production, mixing, and mastering. Studio-quality output without the studio cost.</p>
         </div>
-        <div class="service-card">
-          <div class="icon">📊</div>
-          <h3>Royalty & Publishing Admin</h3>
-          <p>Full publishing administration: copyright registration, PRO affiliation, MLC, SoundExchange. We track every cent owed to our artists and make sure they collect.</p>
+        <div class="service-card reveal">
+          <div class="icon">&#128202;</div>
+          <h3>Royalty &amp; Publishing Admin</h3>
+          <p>Full publishing administration: copyright registration, PRO affiliation, MLC, SoundExchange. Every cent tracked.</p>
         </div>
-        <div class="service-card">
-          <div class="icon">📱</div>
+        <div class="service-card reveal">
+          <div class="icon">&#128241;</div>
           <h3>Smart Marketing</h3>
-          <p>Data-driven social media strategy, fan engagement tools, and AI-assisted content creation. We build real fanbases, not vanity metrics.</p>
+          <p>Data-driven social media strategy, fan engagement tools, and AI-assisted content creation. Real fanbases, not vanity metrics.</p>
         </div>
-        <div class="service-card">
-          <div class="icon">🤖</div>
+        <div class="service-card reveal">
+          <div class="icon">&#129302;</div>
           <h3>AI Operations</h3>
-          <p>24/7 AI chief of staff managing scheduling, email, research, and operations. Our artists stay focused on creating while the system handles the rest.</p>
+          <p>24/7 AI chief of staff managing scheduling, email, research, and operations. Artists create, the system handles the rest.</p>
         </div>
-        <div class="service-card">
-          <div class="icon">🌐</div>
+        <div class="service-card reveal">
+          <div class="icon">&#127760;</div>
           <h3>Digital Distribution</h3>
-          <p>Every major platform covered: Spotify, Apple Music, Tidal, YouTube, TikTok. We handle metadata, ISRC codes, and release strategy.</p>
+          <p>Every major platform: Spotify, Apple Music, Tidal, YouTube, TikTok. Metadata, ISRC codes, release strategy handled.</p>
         </div>
-        <div class="service-card">
-          <div class="icon">⚡</div>
+        <div class="service-card reveal">
+          <div class="icon">&#9889;</div>
           <h3>Brand Development</h3>
-          <p>From EPKs and press kits to visual identity and storytelling. We help artists build brands that last, not just songs that stream.</p>
+          <p>From EPKs and press kits to visual identity and storytelling. We build brands that last, not just songs that stream.</p>
         </div>
       </div>
     </div>
@@ -597,25 +1203,73 @@
   <!-- AI NATIVE -->
   <section id="ai-native">
     <div class="container ai-content">
-      <p class="section-label">Why AI-Native</p>
-      <h2 class="section-title">We don't use AI as a gimmick.<br>We built the label on it.</h2>
-      <p class="section-text">Most labels are adding AI as an afterthought. We started with AI as the foundation. Every part of our operation, from production to admin to fan engagement, runs on AI infrastructure that our team built and controls.</p>
+      <p class="section-label reveal">Why AI-Native</p>
+      <h2 class="section-title reveal">We don't use AI as a gimmick.<br>We built the label on it.</h2>
+      <p class="section-text reveal">Most labels are adding AI as an afterthought. We started with AI as the foundation. Every part of our operation, from production to admin to fan engagement, runs on AI infrastructure that our team built and controls.</p>
+
       <div class="ai-features">
-        <div class="ai-feature">
+        <div class="ai-feature reveal">
+          <div class="feature-icon">&#129302;</div>
           <h4>Operational AI Staff</h4>
-          <p>Our AI chief of staff manages schedules, research, email, and daily operations so artists can focus purely on creativity.</p>
+          <p>Our AI chief of staff manages schedules, research, email, and daily operations so artists focus purely on creativity.</p>
         </div>
-        <div class="ai-feature">
-          <h4>Intelligent Fan Intelligence</h4>
+        <div class="ai-feature reveal">
+          <div class="feature-icon">&#128200;</div>
+          <h4>Intelligent Fan Insights</h4>
           <p>Real-time follower tracking, engagement analytics, and audience insights that drive real decisions, not guesses.</p>
         </div>
-        <div class="ai-feature">
+        <div class="ai-feature reveal">
+          <div class="feature-icon">&#128230;</div>
           <h4>Automated Publishing</h4>
-          <p>Copyright filings, PRO registrations, royalty splits, and collection tracking. Automated, accurate, and on time.</p>
+          <p>Copyright filings, PRO registrations, royalty splits, and collection tracking. Automated, accurate, on time.</p>
         </div>
-        <div class="ai-feature">
+        <div class="ai-feature reveal">
+          <div class="feature-icon">&#128269;</div>
           <h4>Data-Driven Releases</h4>
           <p>AI-assisted release strategy, content calendars, and marketing timing based on real engagement data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section id="press">
+    <div class="container">
+      <p class="section-label reveal">As Seen On</p>
+      <h2 class="section-title reveal">Press &amp; Media</h2>
+
+      <div class="press-grid">
+        <div class="press-item reveal">
+          <div class="outlet">Fox 5 NY</div>
+          <div class="description">Devan featured for AI music production</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">NY Post</div>
+          <div class="description">AI-powered beat making from Bronx sounds</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">News 12</div>
+          <div class="description">Mia Lailani debut album coverage</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">Broadway World</div>
+          <div class="description">Mia's crossover appeal and vocal range</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">Bleacher Report</div>
+          <div class="description">Yankee Stadium beat series feature</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">Roc Nation</div>
+          <div class="description">Official partnership, April 2026</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">Suno AI</div>
+          <div class="description">Pioneer artist in AI-assisted music</div>
+        </div>
+        <div class="press-item reveal">
+          <div class="outlet">Her Frequency</div>
+          <div class="description">Mia performance at NYC Women's Open Mic</div>
         </div>
       </div>
     </div>
@@ -624,22 +1278,54 @@
   <!-- JOIN -->
   <section id="join">
     <div class="container">
-      <p class="section-label">For Independent Artists</p>
-      <h2 class="section-title">Ready to level up?</h2>
-      <div class="join-box">
+      <p class="section-label reveal">For Independent Artists</p>
+      <h2 class="section-title reveal">Ready to level up?</h2>
+      <div class="join-box reveal">
         <h3>Join Mighty One Music</h3>
-        <p>We're looking for independent artists who are serious about their craft. If you want AI-powered support, real ownership of your music, and a team that builds with you, not for you, let's talk.</p>
-        <a href="mailto:kai.ops.mightyai@gmail.com?subject=Artist%20Submission%20-%20Mighty%20One%20Music" class="btn btn-primary">Submit Your Music</a>
+        <p>We're looking for independent artists who are serious about their craft. AI-powered support, real ownership of your music, and a team that builds with you, not for you.</p>
+        <div class="hero-buttons">
+          <a href="mailto:kai.ops.mightyai@gmail.com?subject=Artist%20Submission%20-%20Mighty%20One%20Music" class="btn btn-primary">Submit Your Music</a>
+          <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <img src="assets/logo.png" style="height:30px;width:auto;object-fit:contain;filter:brightness(0) invert(0.5);">
+    <img src="assets/logo.png" class="footer-logo" alt="Mighty One Music">
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#artists">Artists</a>
+      <a href="#releases">Releases</a>
+      <a href="#services">Services</a>
+      <a href="#join">Join</a>
+    </div>
     <p>&copy; 2026 Mighty One Music. All rights reserved. Built in the Bronx.</p>
-    <p style="margin-top: 0.5rem;">The First AI-Native Independent Label</p>
+    <p class="footer-tagline">The First AI-Native Independent Label</p>
   </footer>
+
+  <!-- SCROLL REVEAL + NAV -->
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
